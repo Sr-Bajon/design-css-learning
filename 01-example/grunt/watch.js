@@ -1,5 +1,5 @@
 module.exports = {
-  libsass: {
+  sass: {
     files: 'public/css/*',
     tasks:['sass', 'autoprefixer']
   }
