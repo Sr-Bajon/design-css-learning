@@ -1,74 +1,34 @@
-angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
-angular.module('ui.bootstrap.demo').controller('DatepickerDemoCtrl', function ($scope) {
-  $scope.today = function () {
-    $scope.dt = new Date();
-  };
-  $scope.today();
+angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap'])
+    .controller('DatepickerDemoCtrl', function ($scope) {
+      var dateCtrl = this;
 
-  $scope.clear = function () {
-    $scope.dt = null;
-  };
+      var formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'dd-MM-yyyy'];
 
-  // Disable weekend selection
-  $scope.disabled = function (date, mode) {
-    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-  };
-
-  $scope.toggleMin = function () {
-    $scope.minDate = $scope.minDate ? null : new Date();
-  };
-  $scope.toggleMin();
-  $scope.maxDate = new Date(2020, 5, 22);
-
-  $scope.open = function ($event) {
-    $scope.status.opened = true;
-  };
-
-  $scope.setDate = function (year, month, day) {
-    $scope.dt = new Date(year, month, day);
-  };
-
-  $scope.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1
-  };
-
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  $scope.format = $scope.formats[0];
-
-  $scope.status = {
-    opened: false
-  };
-
-  var tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  var afterTomorrow = new Date();
-  afterTomorrow.setDate(tomorrow.getDate() + 2);
-  $scope.events =
-    [
-      {
-        date: tomorrow,
-        status: 'full'
-      },
-      {
-        date: afterTomorrow,
-        status: 'partially'
-      }
-    ];
-
-  $scope.getDayClass = function (date, mode) {
-    if (mode === 'day') {
-      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-      for (var i = 0; i < $scope.events.length; i++) {
-        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-        if (dayToCheck === currentDay) {
-          return $scope.events[i].status;
+      dateCtrl.picker = {
+        value: new Date(),
+        format: formats[4],
+        mindDate: new Date(1900, 0, 1),
+        maxDate: new Date(),
+        dateOptions: {
+          startingDay: 1
+        },
+        opened: false,
+        open: function ($event) {
+          dateCtrl.picker.opened = true;
         }
-      }
-    }
+      };
 
-    return '';
-  };
-});
+    });
+
+
+/*
+Pensamientos homicidas:
+  parece que datepicker de angular-ui-bootstrap tiene dos tipos de parametros:
+  unos que hay que interpolar en el html y que serían los que pueden cambiar en
+    tiempo de ejecución
+  y otros que aunque hay que poner el atributo en el elemento que tenga la
+    directiva no hay que interpolarlos, sino definirlos en el controlador.
+
+  Porque se ha hecho asi esto escapa a mi entendimiento, espero que no sea la
+    norma esto.
+ */

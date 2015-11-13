@@ -1,21 +1,29 @@
-angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
-angular.module('ui.bootstrap.demo').controller('DatepickerDemoCtrl', function ($scope) {
-  var dateCtrl = this;
+angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap'])
+    .controller('DatepickerDemoCtrl', [function () {
+      var dateCtrl = this;
 
-  dateCtrl.dt = new Date();
+      dateCtrl.dt = {};
 
-  dateCtrl.dt.minDate = new Date(1900, 0, 1);
-  dateCtrl.dt.maxDate = new Date();
-  dateCtrl.dt.opened = false;
+      dateCtrl.dt.value = new Date();
 
 
-  dateCtrl.open = function ($event) {
-    dateCtrl.dt.opened = 'true';
-  };
+      dateCtrl.dt.minDate = new Date(1900, 0, 1);
+      dateCtrl.dt.maxDate = new Date();
+      dateCtrl.dt.options = {
+        isOpen: false,
+        clearText: 'Limpiar',
+        closeText: 'Cerrar',
+        showButtonBar: false,
+        uibDatepickerPopup: 'dd-mm-yyyy'
+      };
 
-  dateCtrl.dt.dateOptions = {
-    startingDay: 1
-  };
+      dateCtrl.saludo = 'Hola';
 
+      dateCtrl.dt.open = function ($event) {
+        dateCtrl.dt.options.isOpen = 'true';
+      };
 
-});
+      dateCtrl.dt.dateOptions = {
+        startingDay: 1
+      };
+    }]);

@@ -1,11 +1,8 @@
 <!doctype html>
 <html ng-app="ui.bootstrap.demo">
 <head>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
-  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
-  <script src="example.js"></script>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+        rel="stylesheet">
 </head>
 <body>
 
@@ -29,26 +26,53 @@
       <p class="input-group">
         <input type="text"
                class="form-control"
-               disabled = "disabled"
-               uib-datepicker-popup='dd.MM.yyyy'
-               ng-model="dateCtrl.dt"
-               is-open="{{dateCtrl.dt.opened}}"
-               min-date="{{dateCtrl.dt.minDate}}"
+               disabled="disabled"
+               ng-model="dateCtrl.dt.value"
+               datepicker-mode="year"
                max-date="{{dateCtrl.dt.maxDate}}"
-               datepicker-options="{{dateCtrl.dt.dateOptions}}"
-               clear-text = 'Limpiar'
-               current-text = 'Hoy'
-               show-button-bar = "false"
-               close-text="Cerrar"/>
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="dateCtrl.open($event)"><i
-                  class="glyphicon glyphicon-calendar"></i></button>
-              </span>
+               min-date="{{dateCtrl.dt.minDate}}"
+               datepicker-options="{{dateCtrl.dt.options}}"
+               />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default"
+                  ng-click="dateCtrl.dt.open($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
       </p>
     </div>
-
   </div>
 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <input type="text" value={{dateCtrl.saludo}}>
+  {{dateCtrl.saludo}}
+
+
 </div>
+
+
+<script
+    src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+<script
+    src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+<script
+    src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+<script src="example.js"></script>
 </body>
 </html>

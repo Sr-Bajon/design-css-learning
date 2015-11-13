@@ -1,11 +1,15 @@
 <!doctype html>
 <html ng-app="ui.bootstrap.demo">
 <head>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
-  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+  <script
+      src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+  <script
+      src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+  <script
+      src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
   <script src="example.js"></script>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+        rel="stylesheet">
 </head>
 <body>
 
@@ -22,19 +26,26 @@
     color: black;
   }
 </style>
-<div ng-controller="DatepickerDemoCtrl">
+<div ng-controller="DatepickerDemoCtrl as dateCtrl">
 
   <div class="row">
     <div class="col-md-6">
       <p class="input-group">
-        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt"
-               is-open="status.opened" min-date="minDate" max-date="maxDate"
-               datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-               ng-required="true" close-text="Close"/>
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i
-                  class="glyphicon glyphicon-calendar"></i></button>
-              </span>
+        <input type="text"
+               class="form-control"
+               ng-model="dateCtrl.picker.value"
+               uib-datepicker-popup="{{dateCtrl.picker.format}}"
+               min-date="dateCtrl.picker.mindDate"
+               max-date="dateCtrl.picker.maxDate"
+               datepicker-options="dateOptions"
+               is-open="dateCtrl.picker.opened"
+               close-text="Close"/>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default"
+                  ng-click="dateCtrl.picker.open($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
       </p>
     </div>
 
