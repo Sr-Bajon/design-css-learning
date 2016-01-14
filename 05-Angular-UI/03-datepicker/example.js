@@ -14,7 +14,7 @@ angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap'])
         },
         opened: false,
         open: function ($event) {
-          dateCtrl.picker.opened = true;
+          this.opened = true;
         }
       };
 
